@@ -1,5 +1,6 @@
-int main() {
-    char x = 10;
-    int[2];
+int add(int a, int b) => return a + b;
+
+int main(void) {
+    
     return EXIT_SUCCESS;
 }
