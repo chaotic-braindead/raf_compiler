@@ -1,0 +1,5 @@
+int main() {
+    char x = 10;
+    int[2];
+    return EXIT_SUCCESS;
+}
