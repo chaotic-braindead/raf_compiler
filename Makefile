@@ -1,4 +1,4 @@
-EXEC = a.out
+EXEC = a.exe
 SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -10,4 +10,4 @@ $(EXEC): $(OBJECTS)
 
 clean:
 	del *.o
-	del a.out
+	del $(EXEC)

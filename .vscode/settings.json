@@ -3,7 +3,8 @@
         "stdio.h": "c",
         "io.h": "c",
         "main.h": "c",
-        "token.h": "c"
+        "token.h": "c",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
