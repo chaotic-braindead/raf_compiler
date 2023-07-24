@@ -14,19 +14,19 @@ lexer_t* lexerInit(char *src){
 }
 
 void lexerNext(lexer_t *lexer){
-    if(lexer->i < lexer->srcSize && lexer->src[lexer->i] != '/0'){
+    if(lexer->i < lexer->srcSize && lexer->src[lexer->i] != '\0'){
         lexer->i++;
         lexer->c = lexer->src[lexer->i];
     }
 }
 
 token_t* lexerNextReturn(lexer_t *lexer, token_t *token){
-    lexerNext(lexer);
+    //lexerNext(lexer);
     return token;
 }
 
-void lexerProcessWhitespace(lexer_t *lexer){
-    while(lexer->c == ' ' || lexer->c == '\t'){
+void lexerProcessWhitespace(lexer_t *lexer){     //ascii for \n
+    while(lexer->c == ' ' || lexer->c == '\t' || lexer->c == 10){
         lexerNext(lexer);
     }
 }
@@ -56,15 +56,16 @@ token_t* lexerProcessOther(lexer_t *lexer, int type){
     buf[1] = '\0';
 
     lexerNext(lexer);
-    return buf;
+    return tokenInit(buf, type);
 }
 token_t* lexerProcess(lexer_t *lexer){
     while(lexer->c != '\0'){
+        lexerProcessWhitespace(lexer);
         if(isalpha(lexer->c)){
-            return lexerNextReturn(lexer, lexerProcessID(lexer));
+            return lexerNextOnReturn(lexer, lexerProcessID(lexer));
         }
         if(isdigit(lexer->c)){
-            return lexerNextReturn(lexer, lexerProcessDigit(lexer));
+            return lexerNextOnReturn(lexer, lexerProcessDigit(lexer));
         }
         switch(lexer->c){
             case '(': return lexerProcessOther(lexer, TOKEN_LPAREN);
@@ -76,6 +77,7 @@ token_t* lexerProcess(lexer_t *lexer){
             case ':': return lexerProcessOther(lexer, TOKEN_COLON); 
             case ';': return lexerProcessOther(lexer, TOKEN_SEMICOLON);
             case '=': return lexerProcessOther(lexer, TOKEN_EQUALS);
+            default: return lexerProcessOther(lexer, TOKEN_UNPROCESSED);
         }
     }
     return tokenInit(0, TOKEN_EOF);

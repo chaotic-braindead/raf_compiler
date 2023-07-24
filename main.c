@@ -1,8 +1,9 @@
-// #include "include/main.h"
-// #include "include/io.h"
+#include "include/main.h"
+#include "include/raf.h"
 #include <stdio.h>
 
 int main(int argv, char* args[]){
-    printf("%s", args[1]);
+    char *src = "int main(){\n char x = 10; int[2]; EXIT_SUCCESS; }";
+    rafCompile(src);
     return 0;
 }

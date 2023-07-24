@@ -15,7 +15,8 @@ typedef struct _TOKEN_T{
         TOKEN_COLON,
         TOKEN_SEMICOLON,
         TOKEN_EQUALS,
-        TOKEN_EOF
+        TOKEN_EOF,
+        TOKEN_UNPROCESSED
     } type;
 } token_t;
 
