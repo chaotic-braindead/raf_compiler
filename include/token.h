@@ -1,5 +1,6 @@
 #ifndef RAF_TOKEN_H
 #define RAF_TOKEN_H
+#define token_type unsigned int
 
 typedef struct _TOKEN_T{
     char *buf;
@@ -14,12 +15,20 @@ typedef struct _TOKEN_T{
         TOKEN_RBRACE,
         TOKEN_COLON,
         TOKEN_SEMICOLON,
+        TOKEN_SQUOTE,
+        TOKEN_DQUOTE,
+        TOKEN_PLUS,
+        TOKEN_MINUS,
+        TOKEN_ASTERISK,
+        TOKEN_FSLASH,
+        TOKEN_BSLASH,
+        TOKEN_PERCENT,        
         TOKEN_EQUALS,
         TOKEN_EOF,
         TOKEN_UNPROCESSED
     } type;
 } token_t;
 
-token_t* tokenInit(char *buf, unsigned int type);
+token_t* tokenInit(char *buf, token_type type);
 
 #endif

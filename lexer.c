@@ -20,8 +20,7 @@ void lexerNext(lexer_t *lexer){
     }
 }
 
-token_t* lexerNextReturn(lexer_t *lexer, token_t *token){
-    //lexerNext(lexer);
+token_t* lexerNextOnReturn(lexer_t *lexer, token_t *token){
     return token;
 }
 
@@ -50,7 +49,7 @@ token_t* lexerProcessDigit(lexer_t *lexer){
     }
     return tokenInit(buf, TOKEN_INT);
 }
-token_t* lexerProcessOther(lexer_t *lexer, int type){
+token_t* lexerProcessOther(lexer_t *lexer, token_type type){
     char *buf = calloc(2, sizeof(char));
     buf[0] = lexer->c;
     buf[1] = '\0';
