@@ -78,14 +78,13 @@ token_t* lexerProcessComment(lexer_t *lexer){
     }
     
     // single line comment
-    while(1){
-        c = lexerPeek(lexer);
+    while(c = lexerPeek(lexer)){
         if(c == '\0' || c == '\n') break;
         buf = realloc(buf, strlen(buf) + 2);
         strcat(buf, (char[]){lexer->c, 0});
         lexerNext(lexer);
     }
-    return tokenInit(buf, TOKEN_ID);
+    return tokenInit(buf, TOKEN_COMMENT);
 }
 
 token_t* lexerProcessArrow(lexer_t *lexer){
