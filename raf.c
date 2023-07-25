@@ -8,7 +8,9 @@ void rafCompile(char *src){
     lexer_t *lexer = lexerInit(src);
     token_t *token;
     while((token = lexerProcess(lexer))->type != TOKEN_EOF){
-        printf("TOKEN = %s | TYPE = %d\n", token->buf, token->type);
+        printf("TOKEN = %s\t| TYPE = ", token->buf);
+        tokenTypeToWords(token->type);
+        printf("\n");
         free(token);
     }
     

@@ -5,8 +5,7 @@
 #include <stdlib.h>
 
 int main(int argv, char* args[]){
-    
-    char *src = rafCompilerIO("test.raf");
+    char *src = rafCompilerIO(args[1]);
     rafCompile(src);
     if(src)
         free(src);

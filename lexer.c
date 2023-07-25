@@ -24,8 +24,8 @@ token_t* lexerNextOnReturn(lexer_t *lexer, token_t *token){
     return token;
 }
 
-void lexerProcessWhitespace(lexer_t *lexer){     //ascii for \n
-    while(lexer->c == ' ' || lexer->c == '\t' || lexer->c == 10){
+void lexerProcessWhitespace(lexer_t *lexer){ 
+    while(lexer->c == ' ' || lexer->c == '\t' || lexer->c == '\n' || lexer->c == 32 || lexer->c == 13){
         lexerNext(lexer);
     }
 }
