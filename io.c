@@ -4,18 +4,21 @@
 #include <string.h>
 
 static ssize_t getline(char **buffer, size_t *length, FILE *fp){
-    size_t bufferSize = 128;
+    const size_t initBufSize = 128;
+    size_t len = initBufSize;
     int i;
     char c; 
 
     if(!*buffer){
-        if(!(*buffer = malloc(bufferSize * sizeof(char))))
+        if(!(*buffer = malloc(initBufSize * sizeof(char))))
             exit(1);
     }
     i = 0;
     while((c = fgetc(fp)) != EOF){
-        if(i + 1 >= *length){
-            *buffer = realloc(*buffer, *length + bufferSize);
+        if(i + 1 >= len){
+            printf("Here");
+            *buffer = realloc(*buffer, initBufSize + len);
+            len += initBufSize;
         }
         (*buffer)[i++] = c;
         if(c == '\n') break;
