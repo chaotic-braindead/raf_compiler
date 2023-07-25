@@ -60,7 +60,7 @@ token_t* lexerProcessComment(lexer_t *lexer){
     char *buf = calloc(1, sizeof(char));
     char c, before;
 
-    // multi-line comment (i could probably use a stack for elegance but i'm too lazy right now)
+    // multi-line comment (this is kinda janky. i could've probably used a stack but i'm too lazy right now)
     if(lexerPeek(lexer) == '#'){
         int check = 0;
         while(1){
