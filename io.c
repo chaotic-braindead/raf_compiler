@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-ssize_t getline(char **buffer, size_t *length, FILE *fp){
+static void strCat(char *d, char *s){
+    while(*d) d++;
+    while(*d++ = *s++);
+}
+static ssize_t getline(char **buffer, size_t *length, FILE *fp){
     size_t bufferSize = 128;
     int i;
     char c; 
@@ -12,7 +16,6 @@ ssize_t getline(char **buffer, size_t *length, FILE *fp){
         if(!(*buffer = malloc(bufferSize * sizeof(char))))
             exit(1);
     }
-
     i = 0;
     while((c = fgetc(fp)) != EOF){
         if(c == '\n') break;
@@ -37,7 +40,7 @@ char* rafCompilerIO(const char *filename){
         exit(1);
     }
 
-    char *buf = calloc(1, sizeof(char));
+    char *buf = malloc(1);
     buf[0] = '\0';
     while((read = getline(&line, &len, fp)) != -1){
         buf = realloc(buf, strlen(buf) + strlen(line) + 1);

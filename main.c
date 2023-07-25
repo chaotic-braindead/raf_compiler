@@ -2,11 +2,14 @@
 #include "include/raf.h"
 #include "include/io.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(int argv, char* args[]){
     
     char *src = rafCompilerIO("test.raf");
-    printf("%s", src);
-    // rafCompile(src);
+    rafCompile(src);
+    if(src)
+        free(src);
     return 0;
 }
