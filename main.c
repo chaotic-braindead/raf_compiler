@@ -7,7 +7,6 @@
 int main(int argv, char* args[]){
     char *src = rafCompilerIO(args[1]);
     rafCompile(src);
-    if(src)
-        free(src);
+    if(src) free(src);
     return 0;
 }

@@ -24,12 +24,17 @@ typedef struct _TOKEN_T{
         TOKEN_BSLASH,
         TOKEN_PERCENT,        
         TOKEN_EQUALS,
+        TOKEN_COMMA,
+        TOKEN_LBRACKET,
+        TOKEN_RBRACKET,
+        TOKEN_ARROW,
+        TOKEN_COMMENT,
+        TOKEN_UNPROCESSED,
         TOKEN_EOF,
-        TOKEN_UNPROCESSED
     } type;
 } token_t;
 
 token_t* tokenInit(char *buf, token_type type);
 
-void tokenTypeToWords(token_type type);
+char* tokenTypeToWords(token_type type);
 #endif

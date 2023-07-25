@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void strCat(char *d, char *s){
-    while(*d) d++;
-    while(*d++ = *s++);
-}
 static ssize_t getline(char **buffer, size_t *length, FILE *fp){
     size_t bufferSize = 128;
     int i;
@@ -18,11 +14,11 @@ static ssize_t getline(char **buffer, size_t *length, FILE *fp){
     }
     i = 0;
     while((c = fgetc(fp)) != EOF){
-        if(c == '\n') break;
         if(i + 1 >= *length){
             *buffer = realloc(*buffer, *length + bufferSize);
         }
         (*buffer)[i++] = c;
+        if(c == '\n') break;
     }
     (*buffer)[i] = '\0';
     *length = i;
@@ -47,10 +43,7 @@ char* rafCompilerIO(const char *filename){
         strcat(buf, line);
     }
     fclose(fp);
-
-    if(line)
-        free(line);
-
+    if(line) free(line);
     return buf;
 }
     

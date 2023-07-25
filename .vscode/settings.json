@@ -4,7 +4,10 @@
         "io.h": "c",
         "main.h": "c",
         "token.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "stdlib.h": "c",
+        "parser.h": "c",
+        "raf.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

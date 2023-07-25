@@ -3,34 +3,41 @@
 #include <stdio.h>
 
 token_t* tokenInit(char *buf, token_type type){
-    token_t *newToken = calloc(1, sizeof(struct _TOKEN_T));
+    token_t *newToken = malloc(sizeof(struct _TOKEN_T));
     newToken->buf = buf;
     newToken->type = type;
     return newToken;
 }
 
-void tokenTypeToWords(token_type type){
+
+// there's definitely a better way to do this but I already put in too much effort on this lmao
+char* tokenTypeToWords(token_type type){
     switch(type){
-        case 0 : printf("TOKEN_ID"); break;
-        case 1 : printf("TOKEN_INT"); break;
-        case 2 : printf("TOKEN_LPAREN"); break;
-        case 3 : printf("TOKEN_RPAREN"); break;
-        case 4 : printf("TOKEN_LCBRACE"); break;
-        case 5 : printf("TOKEN_RCBRACE"); break;
-        case 6 : printf("TOKEN_LBRACE"); break;
-        case 7 : printf("TOKEN_RBRACE"); break;
-        case 8 : printf("TOKEN_COLON"); break;
-        case 9 : printf("TOKEN_SEMICOLON"); break;
-        case 10 : printf("TOKEN_SQOUTE"); break;
-        case 11 : printf("TOKEN_DQUOTE"); break;
-        case 12 : printf("TOKEN_PLUS"); break;
-        case 13 : printf("TOKEN_MINUS"); break;
-        case 14 : printf("TOKEN_ASTERISK"); break;
-        case 15 : printf("TOKEN_FSLASH"); break;
-        case 16 : printf("TOKEN_BSLASH"); break;
-        case 17 : printf("TOKEN_PERCENT"); break;
-        case 18 : printf("TOKEN_EQUALS"); break;
-        case 19 : printf("TOKEN_EOF"); break;
-        case 20 : printf("TOKEN_UNPROCESSED"); break;
+        case 0 : return "TOKEN_ID";
+        case 1 : return "TOKEN_INT";
+        case 2 : return "TOKEN_LPAREN";
+        case 3 : return "TOKEN_RPAREN";
+        case 4 : return "TOKEN_LCBRACE";
+        case 5 : return "TOKEN_RCBRACE";
+        case 6 : return "TOKEN_LBRACE";
+        case 7 : return "TOKEN_RBRACE";
+        case 8 : return "TOKEN_COLON";
+        case 9 : return "TOKEN_SEMICOLON";
+        case 10 : return "TOKEN_SQOUTE";
+        case 11 : return "TOKEN_DQUOTE";
+        case 12 : return "TOKEN_PLUS";
+        case 13 : return "TOKEN_MINUS";
+        case 14 : return "TOKEN_ASTERISK";
+        case 15 : return "TOKEN_FSLASH";
+        case 16 : return "TOKEN_BSLASH";
+        case 17 : return "TOKEN_PERCENT";
+        case 18 : return "TOKEN_EQUALS";
+        case 19 : return "TOKEN_COMMA";
+        case 20 : return "TOKEN_LBRACKET";
+        case 21 : return "TOKEN_RBRACKET";
+        case 22 : return "TOKEN_ARROW";
+        case 23 : return "TOKEN_COMMENT";
+        case 24 : return "TOKEN_EOF";
     }
+    return "TOKEN_UNPROCESSED";
 }
