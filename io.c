@@ -16,7 +16,6 @@ static ssize_t getline(char **buffer, size_t *length, FILE *fp){
     i = 0;
     while((c = fgetc(fp)) != EOF){
         if(i + 1 >= len){
-            printf("Here");
             *buffer = realloc(*buffer, initBufSize + len);
             len += initBufSize;
         }
