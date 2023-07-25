@@ -131,9 +131,7 @@ token_t* lexerProcess(lexer_t *lexer){
             case '/': return lexerProcessOther(lexer, TOKEN_FSLASH);
             case '\\': return lexerProcessOther(lexer, TOKEN_BSLASH);
             case '%': return lexerProcessOther(lexer, TOKEN_PERCENT);
-            case '=': { 
-                    return lexerPeek(lexer) == '>' ? lexerProcessArrow(lexer) : lexerProcessOther(lexer, TOKEN_EQUALS);
-            }
+            case '=': return lexerPeek(lexer) == '>' ? lexerProcessArrow(lexer) : lexerProcessOther(lexer, TOKEN_EQUALS); 
             case ',' : return lexerProcessOther(lexer, TOKEN_COMMA);
             case '<' : return lexerProcessOther(lexer, TOKEN_LBRACKET);
             case '>' : return lexerProcessOther(lexer, TOKEN_RBRACKET);
