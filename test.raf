@@ -10,7 +10,6 @@ int add(int a, int b) => return a + b;
 int main(void) {
     int a = 1, b = 2; 
     Array<int, 1> arr = {1}; # this is a comment
-    
     string str = "string";
     print("a + b = %s", add(a, b));
     return EXIT_SUCCESS;

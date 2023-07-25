@@ -29,9 +29,6 @@ char lexerPeek(lexer_t *lexer){
     return lexer->i < lexer->srcSize ? lexer->src[(lexer->i)+1] : '\0';
 }
 
-static int isWhiteSpace(char c){
-    return (c == ' ' || c == '\t' || c == '\n' || c == 32 || c == 13);
-}
 void lexerProcessWhitespace(lexer_t *lexer){ 
     while(lexer->c == ' ' || lexer->c == '\t' || lexer->c == '\n' || lexer->c == 32 || lexer->c == 13){
         lexerNext(lexer);
@@ -60,7 +57,7 @@ token_t* lexerProcessComment(lexer_t *lexer){
     char *buf = calloc(1, sizeof(char));
     char c, before;
 
-    // multi-line comment (this is kinda janky. i could've probably used a stack but i'm too lazy right now)
+    // multi-line comment (this is kinda janky. i could've probably used a stack or something but i'm too lazy right now)
     if(lexerPeek(lexer) == '#'){
         int check = 0;
         while(1){
