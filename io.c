@@ -41,7 +41,7 @@ char* rafCompilerIO(const char *filename){
     char *buf = malloc(1);
     buf[0] = '\0';
     while((read = getline(&line, &len, fp)) != -1){
-        buf = realloc(buf, strlen(buf) + strlen(line) + 1);
+        buf = realloc(buf, strlen(buf) + len + 1);
         strcat(buf, line);
     }
     fclose(fp);
